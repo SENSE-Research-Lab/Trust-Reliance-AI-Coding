@@ -1,0 +1,117 @@
+
+INSTRUCTIONS
+
+----------------------------------------------------------------------------------
+
+Instructions to be read to the participant:
+
+Please carefully listen to the following instructions and ask any questions
+that you may have. Throughout the experiment, do your best to avoid slouching
+in your seat or moving your head in any direction as this may interfere with
+the eye tracking data. Likewise, please avoid minimizing windows, maximizing
+windows, opening new windows or moving existing windows around.
+
+After having understood these instructions, you may proceed with the first
+series of tasks. This series will last for 15 minutes at which point the
+researcher will come to announce its end. You will be given a short break while
+the researcher finishes the setup for the second series of tasks. You will then
+be asked to begin the next series of tasks.
+
+Each task within a series of tasks should take approximately 5 minutes. At the
+end of the experiment, you will be required to sign a consent form and retrieve
+your compensation.
+
+DISCLAIMER: Before each series of tasks, the researcher will help you with
+calibrating the eye-tracker.
+
+----------------------------------------------------------------------------------
+
+Instructions for TASK SERIES 1:
+
+In TASK SERIES 1, you will be solving coding problems with the help of GitHub
+Copilot. If you have any questions, you must ask Copilot as the researcher will
+not be available.
+
+- Use CTRL+Click to explore functions.
+- Use "python -m glances" in the terminal to run Glances GUI (errors indicate your solution is wrong).
+- Use CTRL+X exit Glances GUI and return to your terminal.
+
+1. File: glances/processes.py
+   Description: In the update_processcount method, ensure that process statuses are
+       correctly counted by handling edge cases like missing or
+       invalid status values in the process list. Modify the lambda
+       function used in filtering to account for such cases.
+   Hint: Should we be verifying object identity (same object in memory) or
+       object equality (same object in value)? Which operator may be
+       causing this issue?
+
+2. File: glances/processes.py
+   Description: Enhance the fallback logic in the get_io_counters method to include a
+       timestamp whenever the IO counters are initialized with default
+       values. Use the time module to add a timestamp field in the
+       proc['io_counters'] list that records when the fallback logic
+       was triggered.
+   Hint: Consider where in the else block the timestamp would fit best. Look
+       into the Python time module and its time() function.
+
+3. File: glances/server.py
+   Description: Add a new method serve_limited to the GlancesXMLRPCServer class. This
+       method allows the server to handle a limited number of requests
+       before stopping. Use a request counter to track the number of
+       handled requests and call the end method when the limit is
+       reached. The method should log both the start of the limited
+       server operation and when it stops due to reaching the limit.
+   Hint: How can you integrate a simple counter to track the number of
+       iterations in a loop? Consider using an existing method to
+       terminate the server gracefully once the count exceeds the
+       given limit.
+
+
+Once you have finished the tasks, you may inform the researcher, wait for them
+to come back, or double-check your solution.
+
+----------------------------------------------------------------------------------
+
+Instructions for TASK SERIES 2:
+
+In TASK SERIES 2, you will be solving coding problems with the help of a peer
+developer. If you have any questions, you must ask the peer developer. Please
+avoid opening the GitHub Copilot window or the chat logs of previous participants.
+
+- Use CTRL+Click to explore functions.
+- Use "python -m glances" in the terminal to run Glances GUI (errors indicate your solution is wrong).
+- Use CTRL+C exit Glances GUI and return to your terminal.
+
+1. File: glances/stats.py
+   Description: Modify the getAll function to allow optional filtering of plugins by
+       name. The function should take an optional filter_list
+       parameter (a list of plugin names). If the parameter is
+       provided, getAll should return stats only for the plugins whose
+       names are in the filter list. If no filter list is provided,
+       the function should behave as it currently does (returning all
+       plugins).
+   Hint: Think about how to check whether a plugin exists in the _plugins
+       dictionary before trying to access its stats. Consider using
+       the in operator to ensure only valid plugin names from the
+       filter_list are processed.
+
+2. File: glances/server.py
+   Description: In the check_user method of the GlancesXMLRPCHandler class, add
+       detailed logging for authentication attempts, including the
+       username (but not the password) and whether the attempt was
+       successful.
+   Hint: What details are safe to log and what should be avoided? Consider
+       using the logger module to differentiate between successful and
+       failed authentication attempts.
+
+3. File: glances/stats.py
+   Description: Create a PluginStatistics class that provides information about how
+       many plugins are active or disabled. This class should interact
+       with the existing GlancesStats methods like getPluginsList.
+   Hint: Use the getPluginsList method with the enable=True and enable=False
+       options to determine active plugins.
+
+
+Once you have finished the tasks, you may inform the researcher, wait for them
+to come back, or double-check your solution.
+
